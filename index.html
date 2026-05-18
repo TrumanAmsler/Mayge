@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mayge Commander Lab</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Mayge Commander Lab</p>
+            <h1>Build around synergy, not popularity.</h1>
+          </div>
+          <div class="status-pill" id="statusPill">Ready</div>
+        </header>
+
+        <section class="control-panel" aria-label="Commander deck controls">
+          <form class="commander-form" id="commanderForm">
+            <label for="commanderInput">Commander</label>
+            <div class="input-row">
+              <input id="commanderInput" name="commander" type="search" placeholder="Atraxa, Praetors' Voice" autocomplete="off" required>
+              <button type="submit">Analyze</button>
+            </div>
+          </form>
+
+          <div class="field-group">
+            <label for="powerLevel">Power target</label>
+            <select id="powerLevel">
+              <option value="casual">Casual</option>
+              <option value="focused" selected>Focused</option>
+              <option value="high">High Power</option>
+              <option value="cedh">cEDH</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="themeInput">Preferred theme</label>
+            <input id="themeInput" type="text" placeholder="tokens, counters, sacrifice, artifacts">
+          </div>
+        </section>
+
+        <section class="commander-view" id="commanderView" hidden>
+          <img id="commanderImage" alt="">
+          <div>
+            <p class="eyebrow" id="commanderType"></p>
+            <h2 id="commanderName"></h2>
+            <p id="commanderText"></p>
+            <div class="metric-grid">
+              <div>
+                <span>Color identity</span>
+                <strong id="colorIdentity"></strong>
+              </div>
+              <div>
+                <span>Mana value</span>
+                <strong id="manaValue"></strong>
+              </div>
+              <div>
+                <span>Legality</span>
+                <strong id="commanderLegal"></strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="recommendations">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Recommendations</p>
+              <h2>Role-first card picks</h2>
+            </div>
+            <button id="recommendButton" disabled>Find Synergy</button>
+          </div>
+          <div class="role-tabs" role="tablist" aria-label="Recommendation roles">
+            <button class="active" data-role="engine" type="button">Engine</button>
+            <button data-role="payoff" type="button">Payoff</button>
+            <button data-role="ramp" type="button">Ramp</button>
+            <button data-role="draw" type="button">Draw</button>
+            <button data-role="interaction" type="button">Interaction</button>
+            <button data-role="protection" type="button">Protection</button>
+          </div>
+          <div class="card-grid" id="cardGrid">
+            <article class="empty-state">
+              <h3>Start with a commander.</h3>
+              <p>Mayge will infer color identity, read the rules text, then search for cards that reinforce the plan.</p>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
